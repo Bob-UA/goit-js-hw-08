@@ -3,7 +3,6 @@ import trottle from 'lodash.throttle';
 const refs = {
   form: document.querySelector('.feedback-form'),
   message: document.querySelector("[name='message']"),
-  email: document.querySelector('[name=email]'),
 };
 const formData = {};
 const FEEDBACK_MESSAGE = 'feedback-form-state';
@@ -19,7 +18,7 @@ function onFormSubmit(e) {
   e.preventDefault();
   e.currentTarget.reset();
   localStorage.removeItem(FEEDBACK_MESSAGE);
-}
+};
 
 function onInputFieldCreate(e) {
   formData[e.target.name] = e.target.value;
@@ -40,4 +39,4 @@ if (savedMessage) {
       }
     }
 }
-}
+};
