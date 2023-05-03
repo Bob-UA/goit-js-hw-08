@@ -1,9 +1,6 @@
 import trottle from 'lodash.throttle';
 
-const refs = {
-  form: document.querySelector('.feedback-form'),
-  message: document.querySelector("[name='message']"),
-};
+const feedbackForm = document.querySelector('.feedback-form');
 const formData = {};
 const FEEDBACK_MESSAGE = 'feedback-form-state';
 
@@ -11,8 +8,8 @@ let fromLocalstorage = "";
 
 populateOutput();
 
-refs.form.addEventListener('submit', onFormSubmit);
-refs.form.addEventListener('input', trottle(onInputFieldCreate, 500));
+feedbackForm.addEventListener('submit', onFormSubmit);
+feedbackForm.addEventListener('input', trottle(onInputFieldCreate, 500));
 
 function onFormSubmit(e) {
   e.preventDefault();
