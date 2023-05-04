@@ -1,21 +1,29 @@
 import trottle from 'lodash.throttle';
 
-const feedbackForm = document.querySelector('.feedback-form');
-const formData = {};
+
 const FEEDBACK_MESSAGE = 'feedback-form-state';
-
+const feedbackForm = document.querySelector('.feedback-form');
+const formData = JSON.parse(localStorage.getItem(FEEDBACK_MESSAGE)) || {};
 let fromLocalstorage = "";
-
 populateOutput();
 
 feedbackForm.addEventListener('submit', onFormSubmit);
 feedbackForm.addEventListener('input', trottle(onInputFieldCreate, 500));
 
+
 function onFormSubmit(e) {
   e.preventDefault();
+  const email = document.querySelector('[name="email"]');
+  const message = document.querySelector('[name="message"]');
+  if (email.value === '' || message.value === '') {
+    return alert('Please fill in all the fields!');
+  }
+  console.log(formData);
   e.currentTarget.reset();
   localStorage.removeItem(FEEDBACK_MESSAGE);
-};
+    
+  };
+
 
 function onInputFieldCreate(e) {
   formData[e.target.name] = e.target.value;
