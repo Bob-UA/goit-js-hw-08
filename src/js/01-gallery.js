@@ -26,13 +26,8 @@ function createGalleryCardsMarckup(elements) {
     .join('');
 }
     let gal = new SimpleLightbox('.gallery a');
-    gal.on('show.simplelightbox', function () {});
-    gal.on('error.simplelightbox', function (e) {
-      console.log(e);
-    });
 
 
 
 // Change code below this line
 
-console.log(galleryItems);

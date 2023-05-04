@@ -3,7 +3,7 @@ import trottle from 'lodash.throttle';
 
 const FEEDBACK_MESSAGE = 'feedback-form-state';
 const feedbackForm = document.querySelector('.feedback-form');
-const formData = JSON.parse(localStorage.getItem(FEEDBACK_MESSAGE)) || {};
+let formData = JSON.parse(localStorage.getItem(FEEDBACK_MESSAGE)) || {};
 let fromLocalstorage = "";
 populateOutput();
 
@@ -21,7 +21,7 @@ function onFormSubmit(e) {
   console.log(formData);
   e.currentTarget.reset();
   localStorage.removeItem(FEEDBACK_MESSAGE);
-    
+  formData = {};
   };
 
 
@@ -32,7 +32,6 @@ function onInputFieldCreate(e) {
 
 function populateOutput() {
 const savedMessage = JSON.parse(localStorage.getItem(FEEDBACK_MESSAGE));
-
 if (savedMessage) {
     const keys = Object.keys(savedMessage);
     const values = Object.values(savedMessage);
